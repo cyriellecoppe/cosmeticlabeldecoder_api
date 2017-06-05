@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CLD Newsletter</title>
+</head>
+<body style="text-align: center;">
+    <table style="display: inline-block; font-size: 18px; color: rgb(51, 51, 51); border-collapse: collapse; max-width: 600px;">
+        <thead>
+            <tr>
+                <td colspan="2" style="text-align: left;">
+                    Thank you for your subscription !
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" style="color: rgb(141, 172, 60); padding-top: 50px; padding-bottom: 30px; text-align: left;">
+                    Discover our latest news
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for news in latest_news %}
+            <tr style="background-color: rgba(0, 0, 0, 0.04);">
+                <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; text-align:left;">
+                    <a href="#" style="color: rgb(141, 172, 60); text-decoration: underline;">
+                        {{ news.title }}
+                    </a>
+                </td>
+                <td style="font-style: italic; font-size: 15px; padding-top: 10px; padding-bottom: 10px; padding-right: 10px; text-align: right;">
+                    {{ news.date }}
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="2" style="padding-bottom: 30px; font-size: 15px; text-align: left;">
+                    {{ news.summary }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="font-style: italic; font-size: 15px; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+                    Click here to <a href="{% url 'unsubscribe' unsubscribe_token %}">unsubscribe</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

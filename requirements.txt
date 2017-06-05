@@ -1,0 +1,13 @@
+# Postgresql
+psycopg2
+
+Django
+
+# Django REST framework
+djangorestframework
+coreapi
+django-filter
+
+# Imaging library
+Pillow
+
