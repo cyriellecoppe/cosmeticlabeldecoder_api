@@ -43,14 +43,14 @@ class CertificationViewSet(viewsets.ReadOnlyModelViewSet):
 class DetailedIngredientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = DetailedIngredientSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('name',)
     filter_fields = ('id',)
 
 
 class IngredientFilter(django_filters.rest_framework.FilterSet):
     name = django_filters.CharFilter(
-        name='name',
+        field_name='name',
         lookup_expr='istartswith',
     )
 
@@ -62,7 +62,7 @@ class IngredientFilter(django_filters.rest_framework.FilterSet):
 class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('name',)
     filter_class = IngredientFilter
 
@@ -70,14 +70,14 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 class DetailedProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = DetailedProductSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('name',)
     filter_fields = ('id',)
 
 
 class ProductFilter(django_filters.rest_framework.FilterSet):
     name = django_filters.CharFilter(
-        name='name',
+        field_name='name',
         lookup_expr='istartswith',
     )
 
@@ -89,7 +89,7 @@ class ProductFilter(django_filters.rest_framework.FilterSet):
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('name',)
     filter_class = ProductFilter
 

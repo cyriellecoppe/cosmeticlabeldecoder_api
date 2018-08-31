@@ -25,7 +25,7 @@ from .serializers import SubscriptionSerializer
 
 
 class ArticleFilter(django_filters.rest_framework.FilterSet):
-    date = django_filters.NumberFilter(name='date', lookup_expr='year')
+    date = django_filters.NumberFilter(field_name='date', lookup_expr='year')
 
     class Meta:
         model = Article
@@ -35,7 +35,7 @@ class ArticleFilter(django_filters.rest_framework.FilterSet):
 class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('date',)
     filter_class = ArticleFilter
 
@@ -46,7 +46,7 @@ class ImageViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class NewsFilter(django_filters.rest_framework.FilterSet):
-    date = django_filters.NumberFilter(name='date', lookup_expr='year')
+    date = django_filters.NumberFilter(field_name='date', lookup_expr='year')
 
     class Meta:
         model = News
@@ -56,7 +56,7 @@ class NewsFilter(django_filters.rest_framework.FilterSet):
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    filter_backends = (filters.OrderingFilter, filters.DjangoFilterBackend,)
+    filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend,)
     ordering_fields = ('date',)
     filter_class = NewsFilter
 
