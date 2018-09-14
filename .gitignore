@@ -3,3 +3,9 @@
 
 # Images
 uploads/
+
+#Visual Studio
+.vscode/
+
+#Virtual Env
+venv_cld/
